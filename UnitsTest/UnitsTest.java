@@ -1,10 +1,8 @@
+import com.company.Length;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by vishnum on 3/14/2015.
- */
 public class UnitsTest {
     @Test
     public void UnitShouldCompareBetweenTwoUnits_01(){
@@ -73,6 +71,24 @@ public class UnitsTest {
         Units u1 = Units.create(Units.LengthUnits.feet,1);
         Units u2 = Units.create(Units.LengthUnits.m,0.3);
         assertEquals(0,u2.compare(u1));
+    }
+    @Test
+    public void UnitShouldCompareBetweenGallonToLiter(){
+        Units u1 = Units.create(Units.VolumeUnits.gallon,1);
+        Units u2 = Units.create(Units.VolumeUnits.litre,3.78);
+        assertEquals(0,u2.compareVolume(u1));
+    }
+    @Test
+    public void UnitShouldCompareBetweenLiterToGallon(){
+        Units u1 = Units.create(Units.VolumeUnits.gallon,1);
+        Units u2 = Units.create(Units.VolumeUnits.litre,3.78);
+        assertEquals(0,u1.compareVolume(u2));
+    }
+    @Test
+    public void UnitShouldCompareBetweenLiterToMl(){
+        Units u1 = Units.create(Units.VolumeUnits.ml,1000);
+        Units u2 = Units.create(Units.VolumeUnits.litre,1);
+        assertEquals(0,u1.compareVolume(u2));
     }
 
 }
